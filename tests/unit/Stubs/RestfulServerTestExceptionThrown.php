@@ -23,7 +23,7 @@ class RestfulServerTestExceptionThrown extends DataObject implements TestOnly
         'Title' => 'Text',
     );
 
-    public function onBeforeWrite()
+    protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
 
