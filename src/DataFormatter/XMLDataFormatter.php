@@ -262,7 +262,7 @@ class XMLDataFormatter extends DataFormatter
      */
     public function convertStringToArray($strData)
     {
-        return self::xml2array($strData);
+        return XMLDataFormatter::xml2array($strData);
     }
 
     /**
@@ -299,7 +299,7 @@ class XMLDataFormatter extends DataFormatter
         // This will throw an exception if the XML contains references to any internal entities
         // that were defined in an <!ENTITY /> before it was removed
         $xml = new SimpleXMLElement($val ?? '');
-        return self::recursiveXMLToArray($xml);
+        return XMLDataFormatter::recursiveXMLToArray($xml);
     }
 
     /**
@@ -326,7 +326,7 @@ class XMLDataFormatter extends DataFormatter
             } // for CDATA
             $r = [];
             foreach ($xml as $key => $value) {
-                $r[$key] = self::recursiveXMLToArray($value);
+                $r[$key] = XMLDataFormatter::recursiveXMLToArray($value);
             }
             // Attributes
             if (isset($a)) {

@@ -89,7 +89,7 @@ class JSONDataFormatter extends DataFormatter
                 continue;
             }
 
-            $fieldValue = self::cast($obj->obj($fieldName));
+            $fieldValue = JSONDataFormatter::cast($obj->obj($fieldName));
             $mappedFieldName = $this->getFieldAlias($className, $fieldName);
             $serobj->$mappedFieldName = $fieldValue;
         }
@@ -120,7 +120,7 @@ class JSONDataFormatter extends DataFormatter
                 $serobj->$relName = ArrayData::array_to_object(array(
                     "className" => $relClass,
                     "href" => "$href.json",
-                    "id" => self::cast($obj->obj($fieldName))
+                    "id" => JSONDataFormatter::cast($obj->obj($fieldName))
                 ));
             }
 
