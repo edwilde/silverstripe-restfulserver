@@ -136,7 +136,7 @@ abstract class DataFormatter
     public static function for_extensions($extensions)
     {
         foreach ($extensions as $extension) {
-            if ($formatter = self::for_extension($extension)) {
+            if ($formatter = DataFormatter::for_extension($extension)) {
                 return $formatter;
             }
         }
@@ -178,7 +178,7 @@ abstract class DataFormatter
     public static function for_mimetypes($mimetypes)
     {
         foreach ($mimetypes as $mimetype) {
-            if ($formatter = self::for_mimetype($mimetype)) {
+            if ($formatter = DataFormatter::for_mimetype($mimetype)) {
                 return $formatter;
             }
         }
@@ -286,7 +286,7 @@ abstract class DataFormatter
 
     /**
      * Returns all fields on the object which should be shown
-     * in the output. Can be customised through {@link self::setCustomFields()}.
+     * in the output. Can be customised through {@link DataFormatter::setCustomFields()}.
      *
      * @param DataObject $obj
      * @return array

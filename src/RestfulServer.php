@@ -48,7 +48,7 @@ class RestfulServer extends Controller
 
     /**
      * If no extension is given in the request, resolve to this extension
-     * (and subsequently the {@link self::$default_mimetype}.
+     * (and subsequently the {@link RestfulServer::$default_mimetype}.
      *
      * @config
      * @var string
@@ -362,7 +362,7 @@ class RestfulServer extends Controller
 
     /**
      * Returns a dataformatter instance based on the request
-     * extension or mimetype. Falls back to {@link self::$default_extension}.
+     * extension or mimetype. Falls back to {@link RestfulServer::$default_extension}.
      *
      * @param boolean $includeAcceptHeader Determines wether to inspect and prioritize any HTTP Accept headers
      * @param string Classname of a DataObject
@@ -884,7 +884,7 @@ class RestfulServer extends Controller
     protected function resolveClassName(HTTPRequest $request)
     {
         $className = $request->param('ClassName');
-        $aliases = self::config()->get('endpoint_aliases');
+        $aliases = static::config()->get('endpoint_aliases');
 
         return empty($aliases[$className]) ? $this->unsanitiseClassName($className) : $aliases[$className];
     }
